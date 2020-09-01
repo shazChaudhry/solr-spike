@@ -1,4 +1,4 @@
-# Intro
+# Intro _(WIP)_
 This repository shows how to get a Solr cluster up and running quickly
 
 ## Deploy Solr cluster
