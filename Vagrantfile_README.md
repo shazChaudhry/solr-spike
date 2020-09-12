@@ -1,10 +1,14 @@
 # Intro
-This section contains instructions that stands up a Virtualbox based environment in which a docker swarm cluster is deployed
+This section describes how to create a [Docker Swarm mode](https://docs.docker.com/engine/swarm/) environment in a [Virtualbox](https://www.virtualbox.org/)
+- One Swarm manager node
+- Three Swarm worker nodes
 
-## Vagrant Box prerequisites _(Optional)_
-Provided Vagrantfile creates an environment that deploys a two-node docker swarm cluster. It is assumed:
-- The user has admin privileges on the development machine
-- At least 4GB of free RAM is available on the machine. Otherwise, Vagrantfile will need editing to adjust the available memory
+The idea is to create a suitable Swarm mode environt locally for testing purpose where an Apache Solr cluster could be deployed
+
+## Prerequisites _(Optional)_
+The Vagrantfile in thhis repo creates an environment that deploys a Docker Swarm mode cluster. It is assumed:
+- The user has admin privileges on the machine where this cluster is being deployed
+- At least 12GB of free RAM is available on that machine. Otherwise, Vagrantfile will need editing to adjust the available memory
   - `v.customize ["modifyvm", :id, "--memory", <MEMORY_ALLOCATION>]`
 - Latest version of [Oracle VM VirtualBox](https://www.virtualbox.org/wiki/Downloads) is installed
 - Latest version of [Git](https://git-scm.com/downloads) is installed
@@ -20,7 +24,7 @@ Provided Vagrantfile creates an environment that deploys a two-node docker swarm
   2. Should you have a need to SSH to vagrant box then run the following commands:
       1.  `vagrant ssh`
       2. `cd /vagrant` _(this is a mount point for the files on the host machine)_
-      3. `docker node ls` _(this will confirm two nodes)_
+      3. `docker node ls` _(this will confirm the numbber of nodes)_
 
 ## Vagrant Box teardown
 Once finished, run the following command:
