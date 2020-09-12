@@ -1,20 +1,34 @@
 version: "3.8"
+
 services:
-  solr:
-    image: solr:8.6.1
-    hostname: solr
-    ports:
-     - "8983:8983"
+  zookeeper:
+    image: itsaur/zookeeper-replicated
+    hostname: "{{.Node.Hostname}}-zookeeper"
+    environment:
+      REPLICAS: 3
+      SERVICE_NAME: zookeeper
     networks:
       - sorl_net
-    volumes:
-      - data:/opt/solr/server/solr/tech_products
-    entrypoint:
-      - docker-entrypoint.sh
-      - solr-precreate
-      - tech_products # This is name of the core or index
+    deploy:
+      replicas: 3
+  
+  # solr:
+  #   image: solr:8.6.1
+  #   hostname: "{{.Node.Hostname}}-solr
+  #   ports:
+  #    - "8983:8983"
+  #   networks:
+  #     - sorl_net
+  #   volumes:
+  #     - data:/opt/solr/server/solr/tech_products
+  #   entrypoint:
+  #     - docker-entrypoint.sh
+  #     - solr-precreate
+  #     - tech_products # This is name of the core or index
+
 volumes:
   data:
+
 networks:
   sorl_net:
     external: true

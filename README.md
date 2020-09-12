@@ -1,10 +1,13 @@
 # Intro
-This repository shows how to get a Solr instance in a Docker container up and running & to ingest data programetically
+This repository describes how to deploy a Solr cluster in Docker Swarm mode & to ingest data programetically
+
+## What is Solr
+- Learn more about Solr at https://lucene.apache.org/solr/
 
 ## Dependencies
-- Docker swarm cluster _(only using a one-node cluster for now. See **Future improvements** section below)_
+- Docker swarm cluster _(see Vagrantfile_README.md for setting up a local test environment)_
 
-## Deploy Solr instance
+## Deploy Solr stack
 Running the following commands will create an overlay & attachable network and then start Solr as a swarm service
 - `docker network create --driver overlay --attachable sorl_net`
 - `docker stack deploy --compose-file docker-compose.yml solr`
@@ -40,11 +43,8 @@ Assuming you uncommented the code that adds a bunch of data _(people.json)_, you
 
 Similarly, you could programetically search or delete data
 
-## Destroy Solr instance
+## Destroy Solr stack
 - `docker stack remove solr`
-
-## Future improvements
-- One improvement might be to run Solr in a cluster configuration
 
 # Reference
 - Getting Started Tutorial - https://youtu.be/Zw4M4NGv-Rw.  This is an excellent introduction to Solr - click on [commands](https://github.com/lucian-12/solr-course/blob/master/solr_installation_commands) that are executed in the video tutorial. Here is the official Solr getting started guide the video is referring to: https://lucene.apache.org/solr/guide/8_6/index.html
