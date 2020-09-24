@@ -7,18 +7,18 @@ This repository describes how to deploy a Solr cluster in Docker Swarm mode & to
 ## Dependencies
 - Docker swarm cluster _(see Vagrantfile_README.md for setting up a local test environment)_
 
-## Deploy Solr stack
-Running the following commands will create an overlay & attachable network and then start Solr as a swarm service
-- `docker network create --driver overlay --attachable sorl_net`
+## Deploy Zookeeper & Solr stack
+Running the following commands will start Solr and Zookeeper clusters as swarm services
+
 - `docker stack deploy --compose-file docker-compose.yml solr`
 
-Please note for now, solr is not running in a cluster formation. That might be some future work
+
 
 ## Check stack status
 - `docker stack services solr`
 - `docker stack ps --no-trunc solr` _(address any error reported at this point)_
 
-If no error is encountered, then Solr dashboard will be available at the following URL. You will notice number of documents to be zero at this moment
+If no error is encountered, then Solr dashboard will be available at the following URL. You will notice number of documents to be zero at this stage
 - http://[YOUR_HOST_NAME]:8983/solr/#/tech_products/core-overview
   - Part of standing up the stack _(docker-compose.yml)_, a core called `tech_products` will be created
   - If in case, you used provided Vagrantfile to create the swarm cluster, you can swap `YOUR_HOST_NAME` with `node1` in the URL above
